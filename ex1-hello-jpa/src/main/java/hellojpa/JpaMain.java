@@ -1,5 +1,6 @@
 package hellojpa;
 
+import javax.management.relation.Role;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -69,6 +70,7 @@ public class JpaMain {
             // 대답은 No. 자바 컬렉션처럼 다루기 때문에 set만 해주면 자동으로 바뀐다. 왜냐면 transaction이 진행되는 동안
             // 변화된 부분을 자동으로 JPA가 찾아주고 UPDATE Query문을 날려준다.
 
+            // 2일차.
 //            Member member1 = new Member(150L, "A");
 //            Member member2 = new Member(160L, "B");
 //
@@ -76,9 +78,29 @@ public class JpaMain {
 //            em.persist(member2);
 //            System.out.println("============================");
 
-            Member findMember = em.find(Member.class, 150L);
-            findMember.setName("ZZZZZ");
+//            Member findMember = em.find(Member.class, 150L);
+//            findMember.setName("ZZZZZ");
             // em.persist(member); --> 안해주는 것이 좋다.
+
+            // 3일차
+           // em.flush에 대해서
+//            Member member = new Member(200L, "member200");
+//            em.persist(member);
+//
+//            em.flush();
+
+            // 준영속 상태에 대해서
+//            Member member = em.find(Member.class, 150L);
+//            member.setName("AAAAA");
+//            // 내가 더 이상 해당 영속된 엔티티를 관리하기 싫다면?
+//            em.detach(member);
+
+            Member2 member2 = new Member2();
+            member2.setUserId("assy110");
+            member2.setAge(23);
+            em.persist(member2);
+
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
