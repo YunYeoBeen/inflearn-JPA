@@ -26,6 +26,14 @@ public class Member {
     @JoinColumn(name="TEAM_ID")
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name="LOCKER_ID")
+    private Locker locker;
+
+    @ManyToMany
+    @JoinTable(name="MEMBER_PRODUCT")
+    private List<Product> products = new ArrayList<Product>();
+
     public Team getTeam() {
         return team;
     }
