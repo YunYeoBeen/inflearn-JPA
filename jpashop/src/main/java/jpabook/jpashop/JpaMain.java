@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
 
@@ -23,6 +24,13 @@ public class JpaMain {
 
             // 사실 단방향으로만 해도 충분하다. 다만 양방향으로 하는 이유는
             // 역방향으로도 조회가 가능하기 때문에 편의성이이 좋다.
+
+            Book book = new Book();
+            book.setName("JPA");
+            book.setPrice(1200);
+            book.setAuthor("김영한");
+            em.persist(book);
+            tx.commit();
 
        } catch (Exception e) {
             tx.rollback();

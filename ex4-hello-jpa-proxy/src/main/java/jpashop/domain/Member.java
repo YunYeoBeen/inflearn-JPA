@@ -1,4 +1,4 @@
-package jpabook.jpashop.domain;
+package jpashop.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class Member extends BaseEntity {
     private List<Order> orders = new ArrayList<>();
 
     @Column(length = 10)
-    private String name;
+    private String username;
     private String city;
     private String street;
     private String zipcode;
@@ -33,12 +33,12 @@ public class Member extends BaseEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getCity() {

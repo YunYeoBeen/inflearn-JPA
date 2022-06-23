@@ -1,4 +1,4 @@
-package jpabook.jpashop.domain;
+package jpashop.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
