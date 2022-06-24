@@ -15,14 +15,27 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
+//            Team team = new Team();
+//            team.setName("TeamA");
+//            em.persist(team);
+//
+//            Member member = new Member();
+//            member.setUserName("member1");
+//            member.changeTeam(team);
+//            em.persist(member);
+            Parent parent = new Parent();
+            Child child1 = new Child();
+            Child child2 = new Child();
+            parent.addChild(child1);
+            parent.addChild(child2);
 
-            Member member = new Member();
-            member.setUserName("member1");
-            member.changeTeam(team);
-            em.persist(member);
+            em.persist(parent);
+
+            em.flush();
+            em.clear();
+
+            Parent findParnet = em.find(Parent.class, parent.getId());
+            findParnet.getChildList().remove(0);
 
 
             // 사실 persist를 하면 1차캐쉬에 저장이 되니깐
